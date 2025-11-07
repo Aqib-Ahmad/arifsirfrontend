@@ -3,7 +3,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 // Base API URL
-const API_URL = "http://localhost:5000/api/users";
+// const API_URL = "http://localhost:5000/api/users";
+const API_URL = "https://arifsirbackend.onrender.com/api/users";
 
 // ✅ Fetch all users (Admin only)
 export const fetchAllUsers = createAsyncThunk(

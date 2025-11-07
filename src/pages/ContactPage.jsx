@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import axios from 'axios';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import axios from "axios";
 
 // Animation variants for Framer Motion
 const containerVariants = {
@@ -15,11 +15,11 @@ const itemVariants = {
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
-  const [message, setMessage] = useState({ text: '', type: '' }); // For success/error messages
+  const [message, setMessage] = useState({ text: "", type: "" }); // For success/error messages
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,28 +29,35 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      // const response = await axios.post('http://localhost:5000/api/contact', formData);
+      const response = await axios.post(
+        "https://arifsirbackend.onrender.com/api/contact",
+        formData
+      );
       console.log(response.data);
 
       // Show success message
-      setMessage({ text: 'Message sent successfully!', type: 'success' });
+      setMessage({ text: "Message sent successfully!", type: "success" });
 
       // Clear the form
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
 
       // Clear the message after 3 seconds
       setTimeout(() => {
-        setMessage({ text: '', type: '' });
+        setMessage({ text: "", type: "" });
       }, 3000);
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
 
       // Show error message
-      setMessage({ text: 'Failed to send message. Please try again.', type: 'error' });
+      setMessage({
+        text: "Failed to send message. Please try again.",
+        type: "error",
+      });
 
       // Clear the message after 3 seconds
       setTimeout(() => {
-        setMessage({ text: '', type: '' });
+        setMessage({ text: "", type: "" });
       }, 3000);
     }
   };
@@ -73,14 +80,17 @@ const ContactPage = () => {
         className="text-lg text-gray-600 text-center mb-12"
         variants={itemVariants}
       >
-        We'd love to hear from you! Reach out to us for any questions or feedback.
+        We'd love to hear from you! Reach out to us for any questions or
+        feedback.
       </motion.p>
 
       {/* Success/Error Message */}
       {message.text && (
         <motion.div
           className={`p-4 mb-6 rounded-lg ${
-            message.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+            message.type === "success"
+              ? "bg-green-100 text-green-700"
+              : "bg-red-100 text-red-700"
           }`}
           variants={itemVariants}
         >
@@ -89,14 +99,19 @@ const ContactPage = () => {
       )}
 
       {/* Contact Form */}
-      <motion.section
-        className="mb-12"
-        variants={itemVariants}
-      >
-        <h2 className="text-3xl font-semibold mb-4 text-gray-800">Send Us a Message</h2>
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
+      <motion.section className="mb-12" variants={itemVariants}>
+        <h2 className="text-3xl font-semibold mb-4 text-gray-800">
+          Send Us a Message
+        </h2>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-6 rounded-lg shadow-md"
+        >
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="name"
+            >
               Name
             </label>
             <input
@@ -111,7 +126,10 @@ const ContactPage = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -126,7 +144,10 @@ const ContactPage = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="message"
+            >
               Message
             </label>
             <textarea
@@ -150,11 +171,10 @@ const ContactPage = () => {
       </motion.section>
 
       {/* Contact Information */}
-      <motion.section
-        className="mb-12"
-        variants={itemVariants}
-      >
-        <h2 className="text-3xl font-semibold mb-4 text-gray-800">Contact Information</h2>
+      <motion.section className="mb-12" variants={itemVariants}>
+        <h2 className="text-3xl font-semibold mb-4 text-gray-800">
+          Contact Information
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Address */}
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -178,11 +198,10 @@ const ContactPage = () => {
       </motion.section>
 
       {/* Map */}
-      <motion.section
-        className="mb-12"
-        variants={itemVariants}
-      >
-        <h2 className="text-3xl font-semibold mb-4 text-gray-800">Our Location</h2>
+      <motion.section className="mb-12" variants={itemVariants}>
+        <h2 className="text-3xl font-semibold mb-4 text-gray-800">
+          Our Location
+        </h2>
         <div className="bg-white p-6 rounded-lg shadow-md">
           <iframe
             title="Google Maps Location"

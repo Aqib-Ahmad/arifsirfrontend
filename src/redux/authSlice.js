@@ -3,7 +3,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 // API Base URL
-const API_URL = "http://localhost:5000/api/auth";
+// const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://arifsirbackend.onrender.com/api/auth";
 
 // ✅ Register User
 export const registerUser = createAsyncThunk(

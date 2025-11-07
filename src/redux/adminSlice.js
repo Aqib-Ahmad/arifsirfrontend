@@ -7,7 +7,8 @@ export const fetchAdminStats = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/admin/stats",
+        // "http://localhost:5000/api/admin/stats",
+        "https://arifsirbackend.onrender.com/api/admin/stats",
         {
           withCredentials: true,
         }
@@ -27,7 +28,8 @@ export const banUser = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/ban/${userId}`,
+        // `http://localhost:5000/api/admin/ban/${userId}`,
+        `https://arifsirbackend.onrender.com/api/admin/ban/${userId}`,
         {},
         { withCredentials: true }
       );
@@ -46,7 +48,8 @@ export const unbanUser = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/unban/${userId}`,
+        // `http://localhost:5000/api/admin/unban/${userId}`,
+        `https://arifsirbackend.onrender.com/api/admin/unban/${userId}`,
         {},
         { withCredentials: true }
       ); // ✅ No body needed
